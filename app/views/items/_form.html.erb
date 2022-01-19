@@ -34,4 +34,8 @@
   <div class="actions mt-2">
     <%= form.submit class:"btn btn-primary" %>
   </div>
+
+  <div class="col-sm-2">
+      <%= form.number_field :user_id, id: :item_user_id, value: current_user.id, type: :hidden %>
+  </div>
 <% end %>

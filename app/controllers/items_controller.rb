@@ -1,9 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: %i[ edit update destroy ]
   # GET /items or /items.json
   def index
-    @items = Item.all
+    if params[:id]
+      @item_user = User.all.find(params[:id])
+      @items = @item_user.items
+    else
+      @items = Item.all
+    end
   end
 
   # GET /items/1 or /items/1.json
@@ -12,7 +18,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new
+    @item = current_user.items.build
   end
 
   # GET /items/1/edit
@@ -21,7 +27,8 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
+    # @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
 
     respond_to do |format|
       if @item.save
@@ -57,6 +64,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  #  Make sure correct user is logged in
+  def correct_user
+    @item = current_user.items.find_by(id: params[:id])
+    redirect_to items_path, notice: "Not authorize to edit this item" if @item.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -65,6 +78,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :count, :description)
+      params.require(:item).permit(:title, :price, :user_id, :count, :description)
     end
 end

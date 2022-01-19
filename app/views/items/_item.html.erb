@@ -17,6 +17,10 @@
       </td>
       <td>
         <%= link_to "Show", item %>
+        <% if current_user && current_user.id == item.user_id  %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_item_path(item) %>  
+        <% end %> 
       </td>
   </tr>
   
