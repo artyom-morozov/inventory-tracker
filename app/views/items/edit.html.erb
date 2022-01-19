@@ -1,0 +1,12 @@
+<h1>Editing item</h1>
+
+<%= render "form", item: @item %>
+
+<br>
+
+
+<div class="btn-group">
+  <%= link_to "Back", items_path, class: "btn btn-secondary"%>
+  <%= button_to "Delete", @item, method: :delete, class:"btn btn-danger" %>
+</div>
+
