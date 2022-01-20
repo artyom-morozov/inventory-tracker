@@ -2,7 +2,10 @@
 
 
   <tr>
-      <th scope="row">1</th>
+      <th scope="row">
+      
+         <%= image_tag item.photo.representation(resize_to_limit: [100, 100], saver: { subsample_mode: "on", strip: true, interlace: true, quality: 70 }).processed.url, class:"w-100 shadow-1-strong rounded mb-4" %>
+      </th>
       <td>
         <%= item.title %>
       </td>

@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    @photo = @item.photo.variant(resize_to_fit: [500, 500], saver: { quality: 1 }).blob
   end
 
   # GET /items/new
@@ -78,6 +79,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :user_id, :count, :description)
+      params.require(:item).permit(:title, :price, :user_id, :count, :photo, :description)
     end
 end

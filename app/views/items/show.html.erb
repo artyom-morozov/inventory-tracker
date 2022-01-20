@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="jumbotron">
+
+  <div class="col">
+    <div class="img-holder" style="background-image: url(<%= url_for(@item.photo.variant(resize_to_limit: [275, nil]).processed.url) %>);">
+  </div>
   <h3>
     <%= @item.title %>
   </h3>
@@ -15,16 +19,12 @@
   </p>
 </div>
 
-
 <div class="btn-group">
   <% if current_user && current_user.id == @item.user_id  %>
     <%= link_to "Edit", edit_item_path(@item), class:"btn btn-primary" %>
   <% end %> 
   <%= link_to "Back", items_path, class: "btn btn-secondary"%>
   <% if current_user && current_user.id == @item.user_id  %>
-          <%= button_to "Delete", @item, method: :delete, class:"btn btn-danger" %>
+      <%= button_to "Delete", @item, method: :delete, class:"btn btn-danger" %>
   <% end %> 
-
-
-  
 </div>
