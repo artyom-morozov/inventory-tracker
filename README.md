@@ -18,7 +18,7 @@ The feature chosen for this challenge was ***image upload***.
 > Allow image uploads AND store image with generated thumbnails
 
 Each item posting allows for an image field which is done using Ruby on Rails native **ActiveStorage** class.
-This allows us to upload images directly to any cloud storage platform as well as transform images with ImageMagick module.
+This allows us to upload images directly to any cloud storage platform as well as resize and transform images.
 
 In the application we upload images directly to Amazon S3 with the following configuration in the `config/storage.yml` file
 ```
