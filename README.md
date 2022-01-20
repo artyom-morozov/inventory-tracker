@@ -72,5 +72,5 @@ rails s
 ## Future Imporvements
 - [x] Implement user management
 - [x] Add image upload
-- [] Add categories to items
-- [] Allow for a search 
+- [ ] Add categories to items
+- [ ] Allow for a search 
