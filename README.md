@@ -1,6 +1,7 @@
 # Shopify Backend Developer Challenge inventoryTracker
 Inventory Tracking application for [Shopify Backend Developer Challenge for Summer 2022](https://docs.google.com/document/d/1z9LZ_kZBUbg-O2MhZVVSqTmvDko5IJWHtuFmIu_Xg1A/edit)
 
+Check out the app [here](https://boiling-harbor-00476.herokuapp.com/)
 ## Overview 
 
 **InventoryTracker** is a localized repository for tracking inventory. Users are able to create an account, and 
