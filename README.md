@@ -39,7 +39,16 @@ We also create smaller image variants when displaying images in the table with A
 
 For image processing in the application we are using **libvips**, because it is [up to 10x faster and consumes 1/10 the memory](https://github.com/libvips/libvips/wiki/Speed-and-memory-use) of the default ImageMagick library.
 
+## Aditional Features
 
+### Categories
+
+The application allows to choose between 5 existing categories to select for each item.
+The items can later be filtered by the category. 
+
+### Search
+
+Search field on the top right allows to search for items using **description** and **title** fields.
 
 ## Running Locally
 To run locally we need to add the following to the `.env` file
@@ -74,5 +83,5 @@ rails s
 ## Future Imporvements
 - [x] Implement user management
 - [x] Add image upload
-- [ ] Add categories to items
-- [ ] Allow for a search 
+- [x] Add categories to items
+- [x] Allow for a search 
