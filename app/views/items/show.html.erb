@@ -3,7 +3,7 @@
 <div class="jumbotron">
 
   <div class="col">
-    <div class="img-holder" style="background-image: url(<%= url_for(@item.photo.variant(resize_to_limit: [275, nil]).processed.url) %>);">
+    <div class="img-holder" style="background-image: url(<%= url_for(@item.photo.variant(resize_to_limit: [300, nil]).processed.url) %>);">
   </div>
   <h3>
     <%= @item.title %>
@@ -17,6 +17,15 @@
   <p>
     Inventory Count: <%= @item.count %>
   </p>
+  <div class="row mb-2">
+    <div class="col">
+       <h5>Featured in:</h5>
+        <% @item.categories.each do |category| %>
+            <%= link_to category.name, category_item_url(:category => category.id)%>
+        <% end %>
+    </div>
+  </div>
+  
 </div>
 
 <div class="btn-group">

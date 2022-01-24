@@ -1,0 +1,21 @@
+<div class="row mb-2">
+  <h1>Categories
+    <% if @item_user %>
+      <span>by <%= @item_user.email %> </span>
+    <% end %>
+    <% if @category %>
+      <span>in category <%= @category.name %> </span>
+    <% end %>
+  </h1>
+</div>
+
+<!-- Gallery -->
+<div class="row">
+  <% @categories.each_slice(3) do |cat_3| %>
+    <% cat_3.each do |category| %>
+      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+          <%=  link_to category.name, category_item_url(:category => category.id) , class:"cat-link"%>
+      </div>
+    <% end %>
+  <% end %>
+</div>

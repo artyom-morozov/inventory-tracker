@@ -7,8 +7,22 @@ class ItemsController < ApplicationController
     if params[:id]
       @item_user = User.all.find(params[:id])
       @items = @item_user.items
+    # elsif params[:search]
+    #   @items = Item.search(params[:search])
+    elsif params[:category]
+      @category = Category.all.find(params[:category])
+      @items = @category.items
     else
       @items = Item.all
+    end
+  end
+
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, notice: "Empty search field!") and return  
+    else
+      @parameter = params[:search].downcase  
+      @results = Item.where("lower(title) LIKE :search OR lower(description) LIKE :search", search: "%#{@parameter}%")
     end
   end
 
@@ -79,6 +93,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :user_id, :count, :photo, :description)
+      params.require(:item).permit(:title, :price, :search,  :user_id, :count, :photo, :description, category_ids: [])
     end
 end

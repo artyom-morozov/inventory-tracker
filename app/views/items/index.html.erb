@@ -1,6 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>Items
+ <% if @item_user %>
+    <span>created by <%= @item_user.email %> </span>
+<% end %>
+<% if @category %>
+  <span>in category <%= @category.name %> </span>
+<% end %>
+</h1>
 <table class="table table-striped table-hover">
   <thead>
     <tr>

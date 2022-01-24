@@ -1,0 +1,20 @@
+<div class="row mb-2">
+  <h1>Items found</h1>
+</div>
+
+<!-- Gallery -->
+<div class="row">
+    <% if @results.empty? %>
+            <h3>No such item</h3>
+    <% else %>
+        <% @results.each do |item| %>
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <%   if item %>
+                <%= link_to item do %>
+                <%= image_tag item.photo.variant(resize_to_limit: [475, nil]).processed, class:"w-100 shadow-1-strong rounded mb-4" %>
+                <% end %>
+            <% end %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
